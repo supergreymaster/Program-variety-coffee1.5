@@ -196,7 +196,7 @@ class Window2(QWidget, Ui_Form1):
             self.add()
 
     def add(self):
-        con = sqlite3.connect("coffee.db")
+        con = sqlite3.connect("data/coffee.db")
         # name,roasting,grains,taste,price,v
         cur = con.cursor()
         cur.execute(f"""INSERT INTO Сoffee(name,roasting,grains,taste,price,v)
@@ -206,7 +206,7 @@ class Window2(QWidget, Ui_Form1):
         print("Добавление произошло успешно")
 
     def change(self):
-        con = sqlite3.connect("coffee.db")
+        con = sqlite3.connect("data/coffee.db")
         cur = con.cursor()
         res = cur.execute(f"SELECT id FROM Сoffee").fetchall()
         a = max([int(i[0]) for i in res])
@@ -249,7 +249,7 @@ class MyWidget(QWidget, Ui_Form):
         self.pushButton_2.clicked.connect(self.loc)
 
     def work(self):
-        con = sqlite3.connect("coffee.db")
+        con = sqlite3.connect("data/coffee.db")
         cur = con.cursor()
         req = cur.execute("SELECT * FROM Сoffee").fetchall()
         print(req)
